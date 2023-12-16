@@ -1,9 +1,8 @@
 package com.geeks.yildiz.activity
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.geeks.yildiz.R
 import com.geeks.yildiz.adapter.OptionAdapter
 import com.geeks.yildiz.databinding.ActivityQuestionBinding
 import com.geeks.yildiz.model.Questions
@@ -14,7 +13,9 @@ class QuestionActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_question)
+        binding = ActivityQuestionBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
         bindViews()
     }
 
@@ -25,7 +26,7 @@ class QuestionActivity : AppCompatActivity() {
             "Пока",
             "Мама",
             "Папа",
-            "Привет",
+            "Привет"
         )
 
         binding.description.text = questions.description

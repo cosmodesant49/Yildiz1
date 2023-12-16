@@ -12,7 +12,8 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Yildiz"
+        android:theme="@style/AppThemeNoActionBar"
+
         tools:targetApi="31">
         <activity
             android:name=".activity.LogIntoActivity"
@@ -27,7 +28,7 @@
             android:name=".activity.LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.QuestionActivity"
+            android:name=".activity.QuestionActivity" android:theme="@style/AppTheme"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

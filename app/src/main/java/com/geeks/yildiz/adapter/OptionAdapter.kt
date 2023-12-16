@@ -5,13 +5,21 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.geeks.yildiz.R
 import com.geeks.yildiz.model.Questions
 
-class OptionAdapter (val context: Context, val questions: Questions):
+class OptionAdapter (val context: Context, val questions: Questions?):
     RecyclerView.Adapter<OptionAdapter.OptionalViewHolder>(){
-    private var options:List<String> = listOf(questions.option1,questions.option2,questions.option3,questions.option4)
+
+
+
+    private var options: List<String> = questions?.let {
+        listOf(it.option1, it.option2, it.option3, it.option4)
+    } ?: emptyList()
+
+
         inner class OptionalViewHolder(itemView: View):RecyclerView.ViewHolder(itemView){
             var optionalView = itemView.findViewById<TextView>(R.id.quiz_option)
         }
@@ -27,5 +35,17 @@ class OptionAdapter (val context: Context, val questions: Questions):
 
     override fun onBindViewHolder(holder: OptionalViewHolder, position: Int) {
     holder.optionalView.text = options[position]
+        holder.itemView.setOnClickListener{
+           // Toast.makeText(context,options[position],Toast.LENGTH_SHORT ).show()
+            questions?.userAnswer = options[position]
+            notifyDataSetChanged()
+
+        }
+        if (questions?.userAnswer == options[position]){
+            holder.itemView.setBackgroundResource(R.drawable.option_item_selected_bg)
+        }
+        else {
+            holder.itemView.setBackgroundResource(R.drawable.option_item_bg)
+        }
     }
 }
