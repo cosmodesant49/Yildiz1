@@ -7,6 +7,6 @@ data class Questions (
     val option3: String,
     val option4: String,
     val answer: String,
-    var userAnswer: String,
-    //var userAnswer: String = "",
-)
+    var userAnswer: String = "",
+
+    )

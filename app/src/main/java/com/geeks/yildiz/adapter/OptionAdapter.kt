@@ -44,7 +44,6 @@ class OptionAdapter(val context: Context, val questions: Questions?) :
         } else {
             holder.itemView.setBackgroundResource(R.drawable.option_item_bg)
         }
-
-
     }
+
 }
