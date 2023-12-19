@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1098569124810",
+    "project_id": "yildiz-eba01",
+    "storage_bucket": "yildiz-eba01.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1098569124810:android:b56fd7f0bd259dd120dd33",
+        "android_client_info": {
+          "package_name": "com.geeks.yildiz"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBGO-fxyajHr_SzLn7lra6wp8P3nV_HVRU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
