@@ -20,7 +20,7 @@ class SignUpActivity : AppCompatActivity() {
 
         binding.btnSignUp.setOnClickListener {
             signUpUser()
-            val intent = Intent(this, MainActivity::class.java)
+            val intent = Intent(this, GroupActivity::class.java)
             startActivity(intent)
         }
         binding.btnLogin.setOnClickListener() {

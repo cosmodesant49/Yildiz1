@@ -26,7 +26,8 @@ class QuestionActivity : AppCompatActivity() {
             "Пока",
             "Мама",
             "Папа",
-            "Привет"
+            "Привет",
+            ""
         )
 
         binding.description.text = questions.description

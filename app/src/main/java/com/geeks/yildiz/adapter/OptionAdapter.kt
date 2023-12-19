@@ -10,9 +10,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.geeks.yildiz.R
 import com.geeks.yildiz.model.Questions
 
-class OptionAdapter (val context: Context, val questions: Questions?):
-    RecyclerView.Adapter<OptionAdapter.OptionalViewHolder>(){
-
+class OptionAdapter(val context: Context, val questions: Questions?) :
+    RecyclerView.Adapter<OptionAdapter.OptionalViewHolder>() {
 
 
     private var options: List<String> = questions?.let {
@@ -20,12 +19,12 @@ class OptionAdapter (val context: Context, val questions: Questions?):
     } ?: emptyList()
 
 
-        inner class OptionalViewHolder(itemView: View):RecyclerView.ViewHolder(itemView){
-            var optionalView = itemView.findViewById<TextView>(R.id.quiz_option)
-        }
+    inner class OptionalViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        var optionalView = itemView.findViewById<TextView>(R.id.quiz_option)
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OptionalViewHolder {
-        val view: View = LayoutInflater.from(context).inflate(R.layout.optional_item,parent,false)
+        val view: View = LayoutInflater.from(context).inflate(R.layout.optional_item, parent, false)
         return OptionalViewHolder(view)
     }
 
@@ -45,6 +44,7 @@ class OptionAdapter (val context: Context, val questions: Questions?):
         } else {
             holder.itemView.setBackgroundResource(R.drawable.option_item_bg)
         }
-    }
 
+
+    }
 }
