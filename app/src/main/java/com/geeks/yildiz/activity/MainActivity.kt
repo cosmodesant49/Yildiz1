@@ -35,7 +35,6 @@ class MainActivity : AppCompatActivity() {
 
     private fun populateDummyData() {
         quizList.add(Quiz("16-12-2023", "16-12-2023"))
-        quizList.add(Quiz("17-12-2023", "17-12-2023"))
     }
 
     fun setUpViews() {
@@ -61,7 +60,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun setUpRecyclerView() {
         adapeter = QuizAdapter(this, quizList)
-        binding.quizRecyclerView.layoutManager = GridLayoutManager(this, 2)
+        binding.quizRecyclerView.layoutManager = GridLayoutManager(this, 1)
         binding.quizRecyclerView.adapter = adapeter
     }
 

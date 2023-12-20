@@ -19,9 +19,6 @@ class OptionAdapter(val context: Context, val questions: Questions?) :
     } ?: emptyList()
 
 
-    inner class OptionalViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var optionalView = itemView.findViewById<TextView>(R.id.quiz_option)
-    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OptionalViewHolder {
         val view: View = LayoutInflater.from(context).inflate(R.layout.optional_item, parent, false)
@@ -44,6 +41,12 @@ class OptionAdapter(val context: Context, val questions: Questions?) :
         } else {
             holder.itemView.setBackgroundResource(R.drawable.option_item_bg)
         }
+
+
+    }
+
+    inner class OptionalViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        var optionalView = itemView.findViewById<TextView>(R.id.quiz_option)
     }
 
 }

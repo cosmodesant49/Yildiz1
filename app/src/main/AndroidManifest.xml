@@ -15,6 +15,9 @@
         android:theme="@style/AppThemeNoActionBar"
         tools:targetApi="31">
         <activity
+            android:name=".activity.ScoreActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.GroupActivity"
             android:exported="false" />
         <activity

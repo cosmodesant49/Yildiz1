@@ -41,9 +41,9 @@ class QuizAdapter(val context: Context, val quizList: List<Quiz>) :
     inner class QuizViewHolder(private val binding: QuizItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-            val textViewTitle = binding.quizTitle
-            val iconView = binding.quizIcon
-            val cardContainer = binding.quizCardContainer
+        val textViewTitle = binding.quizTitle
+        val iconView = binding.quizIcon
+        val cardContainer = binding.quizCardContainer
 
 
     }

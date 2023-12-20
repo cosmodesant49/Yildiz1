@@ -1,5 +1,6 @@
 package com.geeks.yildiz.activity
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -14,40 +15,99 @@ import com.google.firebase.firestore.FirebaseFirestore
 class QuestionActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityQuestionBinding
-    var quizzes : MutableList<Quiz>?=null
-    var questions : MutableMap<String, Questions>?=null
-    var index = 1
+    private var questions: MutableList<Questions> = mutableListOf(
+        Questions(
+            "Merhaba",
+            "Привет",
+            "Пока",
+            "Мама",
+            "Папа",
+            "Привет"
+
+        ),
+        Questions(
+            "Evet",
+            "Да",
+            "Нет",
+            "Не знаю",
+            "Пока",
+            "Да"
+        ),
+        Questions(
+            "Hayır",
+            "Нет",
+            "Привет",
+            "Пока",
+            "Да",
+            "Нет"
+        ),
+        Questions(
+            "Lütfen",
+            "Пожалуйста",
+            "Спасибо",
+            "Как дела?",
+            "Как тебя зовут",
+            "Пожалуйста"
+        ),
+        Questions(
+            "Teşekkür ederim",
+            "Пожалуйста",
+            "Спасибо",
+            "Как дела?",
+            "Как тебя зовут",
+            "Спасибо"
+        ),
+    )
+    private var index = 1
+
+    /*Создать переменную для хранения результата*/
+    private var result = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityQuestionBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        setUpFirestore()
+        bindViews()
+        /*setUpEventLisiner(questions.get(index-1))*/
+
     }
 
-    private fun setUpFirestore() {
-        val firestore: FirebaseFirestore = FirebaseFirestore.getInstance()
-
-        // Выполните запрос и обработайте результат
-        firestore.collection("quizzes").get().addOnSuccessListener {
-            if ( it != null && !it.isEmpty) {
-                Log.d("DATA", it.toObjects(Quiz::class.java).toString())
-                quizzes = it.toObjects(Quiz::class.java)
-                questions = quizzes!![0].questions
-                bindViews()
+    private fun setUpEventLisiner(question: Questions) {
+        binding.btnPrevious.setOnClickListener {
+            index--
+            bindViews()
+        }
+        binding.btnNext.setOnClickListener {
+            if (question.userAnswer.equals(question.answer)) {
+                result += 20
+                Log.e("ololo", "${question.userAnswer}")
             }
+
+            index++
+            bindViews()
+        }
+        binding.btnSubmit.setOnClickListener {
+            if (question.userAnswer.equals(question.answer)) {
+                result += 20
+
+                Log.e("ololo", "${question.userAnswer}")
+            }
+
+
+            val intent = Intent(this, ScoreActivity::class.java)
+            intent.putExtra("key", result.toString())
+            startActivity(intent)
         }
     }
 
     private fun bindViews() {
-
         binding.btnPrevious.visibility = View.GONE
         binding.btnSubmit.visibility = View.GONE
         binding.btnNext.visibility = View.GONE
 
         if (index == 1) {
             binding.btnNext.visibility = View.VISIBLE
-        } else if (index == questions!!.size) {
+        } else if (index == questions.size) {
             binding.btnSubmit.visibility = View.VISIBLE
             binding.btnPrevious.visibility = View.VISIBLE
         } else {
@@ -55,23 +115,15 @@ class QuestionActivity : AppCompatActivity() {
             binding.btnNext.visibility = View.VISIBLE
         }
 
+        //  val questions: Questions = questions[index - 1]
 
-/*        val questions = Questions(
-            "Merhaba",
-            "Привет",
-            "Пока",
-            "Мама",
-            "Папа",
-            "Привет"
-        )*/
-        val questions: Questions? = questions!!["question$index"]
-        questions?.let {
+        val question: Questions = questions[index - 1].copy()
+        binding.description.text = question.description
 
-            binding.description.text = it.description
-            val optionAdapter = OptionAdapter(this, it)
-            binding.optionalList.layoutManager = LinearLayoutManager(this)
-            binding.optionalList.adapter = optionAdapter
-            binding.optionalList.setHasFixedSize(true)
-        }
+        val optionAdapter = OptionAdapter(this, question)
+        binding.optionalList.adapter = optionAdapter
+
+        setUpEventLisiner(question)
+        //binding.optionalList.setHasFixedSize(true)
     }
 }
