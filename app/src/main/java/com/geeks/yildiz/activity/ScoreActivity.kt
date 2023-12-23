@@ -1,5 +1,6 @@
 package com.geeks.yildiz.activity
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.geeks.yildiz.R
@@ -14,5 +15,10 @@ class ScoreActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.tvScore.text = intent.getStringExtra("key")
+
+        binding.btnGoBack.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
     }
 }

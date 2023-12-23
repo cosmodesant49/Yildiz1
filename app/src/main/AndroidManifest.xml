@@ -15,6 +15,9 @@
         android:theme="@style/AppThemeNoActionBar"
         tools:targetApi="31">
         <activity
+            android:name=".activity.ProfileActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.ScoreActivity"
             android:exported="false" />
         <activity
@@ -25,7 +28,7 @@
             android:exported="false"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".activity.LogIntoActivity"
+            android:name=".activity.MainActivity"
             android:exported="false" />
         <activity
             android:name=".activity.SignUpActivity"
@@ -34,7 +37,7 @@
             android:name=".activity.LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.MainActivity"
+            android:name=".activity.LogIntoActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

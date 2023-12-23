@@ -1,9 +1,11 @@
 package com.geeks.yildiz.activity
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.recyclerview.widget.GridLayoutManager
@@ -12,6 +14,7 @@ import com.geeks.yildiz.R
 import com.geeks.yildiz.adapter.QuizAdapter
 import com.geeks.yildiz.databinding.ActivityMainBinding
 import com.geeks.yildiz.model.Quiz
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.toObjects
@@ -23,6 +26,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var adapeter: QuizAdapter
     private var quizList = mutableListOf<Quiz>()
     lateinit var firestore: FirebaseFirestore
+    lateinit var firebaseAuth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,9 +50,9 @@ class MainActivity : AppCompatActivity() {
     private fun setUpFireStore() {
         firestore = FirebaseFirestore.getInstance()
         val collectionReference: CollectionReference = firestore.collection("quizzers")
-        collectionReference.addSnapshotListener{value, error ->
-            if (value == null || error == null){
-                Toast.makeText(this,"Data error", Toast.LENGTH_SHORT).show()
+        collectionReference.addSnapshotListener { value, error ->
+            if (value == null || error == null) {
+                //Toast.makeText(this,"Data error", Toast.LENGTH_SHORT).show()
                 return@addSnapshotListener
             }
             Log.d("DATA", value.toObjects(Quiz::class.java).toString())
@@ -74,12 +78,19 @@ class MainActivity : AppCompatActivity() {
         )
         binding.mainDrawer.addDrawerListener(actionBarDrawerToggle)
         actionBarDrawerToggle.syncState()
+
     }
+
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (actionBarDrawerToggle.onOptionsItemSelected(item)) {
             return true
+
+
         }
         return super.onOptionsItemSelected(item)
+
     }
+
+
 }

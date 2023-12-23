@@ -5,8 +5,39 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activity.ScoreActivity">
+    <ImageView
+        android:id="@+id/iv_yildiz"
+        android:layout_width="100dp"
+        android:layout_height="60dp"
+        android:background="@drawable/yildiz"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <ImageView
+        android:id="@+id/iv_line"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/yellow"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="80dp"/>
+
+
+    <ImageView
+        android:id="@+id/iv_people"
+        android:layout_width="300dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/people"
+        app:layout_constraintBottom_toTopOf="@+id/tvScore"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_line" />
 
     <TextView
+        android:textColor="@color/black"
         android:id="@+id/tvScore"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -16,5 +47,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnGoBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Go Back"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvScore" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

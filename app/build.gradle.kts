@@ -7,9 +7,7 @@ plugins {
 android {
     namespace = "com.geeks.yildiz"
     compileSdk = 34
-viewBinding{
-    enable=true
-}
+
 
     defaultConfig {
         applicationId = "com.geeks.yildiz"
@@ -36,6 +34,9 @@ viewBinding{
     }
     kotlinOptions {
         jvmTarget = "1.8"
+    }
+    viewBinding{
+        enable=true
     }
 }
 
